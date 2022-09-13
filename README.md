@@ -1,7 +1,7 @@
 # My website » [ONLIX.ME](https://onlix.me)
 The source code of my website, **onlix.me** (2021-2022).
 
-![Screenshot](docs/assets/website.png)
+![Screenshot](docs/assets/screenshots/2022-09-13.png)
 
 ## Self-hosting
 Do you want to...
