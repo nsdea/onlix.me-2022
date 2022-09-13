@@ -1,0 +1,19 @@
+* {
+    outline: 1px dotted hsla(0, 0%, 100%, 0.695) !important;
+}
+
+div {
+    outline: 1px dotted hsla(0, 100%, 50%, 0.776) !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    outline: 1px dotted hsla(125, 100%, 50%, 0.72) !important;
+}
+
+p {
+    outline: 1px dotted hsla(174, 100%, 50%, 0.72) !important;
+}
+
+strong, b, a, u, i {
+    outline: 1px dotted hsla(55, 100%, 50%, 0.72) !important;
+}
