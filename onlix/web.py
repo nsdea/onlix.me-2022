@@ -29,12 +29,10 @@ app.config.from_mapping({
 })
 app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1)
 
-from cdn import cdn_bp
 from api import api_bp
 from blog import blog_bp
 from main import main_bp
 
-app.register_blueprint(cdn_bp)
 app.register_blueprint(api_bp)
 app.register_blueprint(blog_bp)
 app.register_blueprint(main_bp)
@@ -48,23 +46,21 @@ limiter = Limiter(
 # === FLASK LIBRARIES ===
 QRcode(app)
 cache = Cache(app)
-# === MODULES ===
 
-# tools.yml('data/error-modules', {})
-# modules = [f.split('.')[0] for f in os.listdir() if (f.endswith('.py') and f.split('.')[0] not in tools.yml('config/disabled-modules'))]
+@app.after_request
+def add_cors_headers(response):
+    if flask.request.path.startswith('/cdn/'):
+        add_header = response.headers.add
 
-# for module in modules:
-#     try:
-#         exec(f'import {module}')
-#         exec(f'{module}.register(app, cache)')
-#     except Exception as e:
-#         print(f'[ERROR] {module}: {e}')
-        
-#         error_yml = tools.yml('data/error-modules')
-#         error_yml[module] = str(e)
-#         tools.yml('data/error-modules', error_yml)
-#     else:
-#         print(f'+ {module}.py')
+        add_header('Access-Control-Allow-Origin', '*')
+        add_header('Access-Control-Allow-Credentials', 'true')
+        add_header('Access-Control-Allow-Headers', 'Content-Type')
+        add_header('Access-Control-Allow-Headers', 'Cache-Control')
+        add_header('Access-Control-Allow-Headers', 'X-Requested-With')
+        add_header('Access-Control-Allow-Headers', 'Authorization')
+        add_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
+    
+    return response
 
 @limiter.request_filter
 def ip_whitelist():

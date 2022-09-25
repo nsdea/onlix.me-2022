@@ -22,7 +22,6 @@ This means you misspelled the library name. Go to [https://pypi.org](https://pyp
 #### Packages you need to install
 Some of the following code snippets require some packages. Simply type `pip install package-name-here` in your terminal for every single one of these. An example (with output):
 
-
     pip install sklearn
 
     Collecting sklearn
@@ -44,7 +43,7 @@ If you want to install more than one package at once, separate them using a spac
 
 Which will install all of them. Then
 
-If you are unsure, if you've already downloaded a package, don't worry - pip will simply skip the installation of it. So just install all of the packages to be sure!
+If you are unsure wether you've already downloaded a package or not, don't worry - `pip` will simply skip the installation or update the package. So just install all of the packages to be sure!
 
 ***
 
@@ -75,9 +74,9 @@ Here's an example of how you can implement this functionality for your Flask ser
 
 This will create a website route (`/example.log`) with a file download. You can change the variable `text` to represent any string you want to. How about the current time?
 
-## Get date & time
+## Get Date & Time (`datetime`)
 The following code will return the current time and date nicely formatted.
-You might also want to check out the [Python strftime cheatsheet ](https://strftime.org/).
+You might also want to check out the [Python strftime cheatsheet](https://strftime.org/).
 
 ### Code
     from datetime import datetime
@@ -88,11 +87,20 @@ You might also want to check out the [Python strftime cheatsheet ](https://strft
     current_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     print(current_time)
     
-### Example output
+### Example Output
+    25/09/2022 10:12:51
 
-    15/06/2022 20:21:02
+## Unix Timestamp `int` to `datetime`
+The following code won't format the code - for that, see the section above.
 
-## Get Linux Distro
+    import datetime
+    
+    unix_time = 1664094041
+    date_time = datetime.datetime.fromtimestamp(unix_time) # a datetime object
+
+It's as simple as that!
+
+## Get Linux Distribution Name & Info
 This only works on Linux systems! Python will grab the content of `/etc/os-release` and return a dictionary we can work with:
 
 ### Code
@@ -105,7 +113,6 @@ This only works on Linux systems! Python will grab the content of `/etc/os-relea
     print(distro.get('BUILD_ID') or distro.get('VERSION_ID') # Distro Version
 
 ### Example output
-
     EndeavourOS
     arch
     2022.04.08
@@ -134,7 +141,7 @@ Before we can run the code, we might also need to quickly install the needed pac
 Don't know how to use pip or think you don't have it installed? Getting an error?
 See [the top of this page](#pip-notice)!
 
-- requests
+- `requests`
 
 ### Code
     import requests
