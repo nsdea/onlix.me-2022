@@ -13,8 +13,7 @@ import flask
 import logging
 
 import tools
-
-
+import manager
 
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.ERROR)
@@ -37,6 +36,8 @@ app.register_blueprint(api_bp)
 app.register_blueprint(blog_bp)
 app.register_blueprint(main_bp)
 
+manager.manage(app)
+
 limiter = Limiter(
     app=app,
     key_func=get_remote_address,
@@ -46,21 +47,6 @@ limiter = Limiter(
 # === FLASK LIBRARIES ===
 QRcode(app)
 cache = Cache(app)
-
-@app.after_request
-def add_cors_headers(response):
-    if flask.request.path.startswith('/cdn/'):
-        add_header = response.headers.add
-
-        add_header('Access-Control-Allow-Origin', '*')
-        add_header('Access-Control-Allow-Credentials', 'true')
-        add_header('Access-Control-Allow-Headers', 'Content-Type')
-        add_header('Access-Control-Allow-Headers', 'Cache-Control')
-        add_header('Access-Control-Allow-Headers', 'X-Requested-With')
-        add_header('Access-Control-Allow-Headers', 'Authorization')
-        add_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE')
-    
-    return response
 
 @limiter.request_filter
 def ip_whitelist():

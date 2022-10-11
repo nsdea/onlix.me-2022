@@ -752,8 +752,8 @@ button.to-top.icon
     clip-path: polygon(50% 0, 0 100%, 100% 100%)
 
 /* Tools */
-.blur-everything *:not(.toggle-big, .toggle-big *)
-    filter: blur(5px), brightness(0.8)
+.blur-everything *:not(.toggle-big):not(.toggle-big *)
+    filter: blur(5px) brightness(0.8)
 
 .clickable.toggle-big::before
     content: "X"
@@ -778,7 +778,3 @@ button.to-top.icon
 *
     &:focus
         outline: none
-
-    &::selection:not(.reset-selection)
-        color: var(--text)
-        background-color: var(--marked)

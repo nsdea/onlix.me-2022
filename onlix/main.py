@@ -11,7 +11,6 @@ DEFAULT_MODULES = ['tools', 'web']
 
 main_bp = flask.Blueprint('main_bp',
     __name__,
-    # template_folder='../'
 )
 
 @main_bp.route('/')

@@ -30,9 +30,13 @@ hidden_service.txt
 .env
 .env*
 
-# Large Files
-share/*
+# Large/Redundant Files
 cdn/*
+cdn/*.*
+share/*
+onlix/static/cdn
+onlix/static/cdn/*
+onlix/static/cdn/*.*
 
 # Closed source
 *.closed

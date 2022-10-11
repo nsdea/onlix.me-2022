@@ -855,8 +855,8 @@ button.to-top.icon {
 }
 
 /* Tools */
-.blur-everything *:not(.toggle-big, .toggle-big *) {
-  filter: blur(5px), brightness(0.8);
+.blur-everything *:not(.toggle-big):not(.toggle-big *) {
+  filter: blur(5px) brightness(0.8);
 }
 
 .clickable.toggle-big::before {
@@ -885,12 +885,4 @@ button.to-top.icon {
 /* Main stuff */
 *:focus {
   outline: none;
-}
-*::-moz-selection:not(.reset-selection) {
-  color: var(--text);
-  background-color: var(--marked);
-}
-*::selection:not(.reset-selection) {
-  color: var(--text);
-  background-color: var(--marked);
 }/*# sourceMappingURL=lila.css.map */

@@ -6,9 +6,7 @@ import markupsafe
 
 api_bp = flask.Blueprint('api_bp',
     __name__,
-    # template_folder='../'
 )
-
 
 @api_bp.route('/ip')
 # @cache.cached(timeout=50)
@@ -28,11 +26,22 @@ def lila_css():
 def api_text():
     return markupsafe.escape(flask.request.args.get('text'))
 
-@api_bp.route('/api/qr/<data>')
-def api_useless(data):
-    if flask.request.args.get('show') == 'true': 
-        return f'<img src="{tools.generate_qr(data)}">'
-    return tools.generate_qr(data)
+@api_bp.route('/api/qr/<path:subpath>')
+def api_qr(subpath):
+    qr = tools.generate_qr
+    subpath = subpath.replace(':/', '://')
+    arg = flask.request.args.get
+
+    if len(subpath) > 1024:
+        flask.abort(400, 'Sorry, QR codes that long are not allowed.')
+
+    if arg('show'): 
+        return f'<img src="{qr(subpath)}">'
+
+    try:
+        return flask.send_file(qr(subpath, fg=arg('fg'), bg=arg('bg'), return_bytesio=True), mimetype='image/jpeg')
+    except ValueError as e:
+        flask.abort(400, str(e))
 
 @api_bp.route('/api/blog')
 def api_blog():

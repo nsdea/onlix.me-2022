@@ -34,14 +34,17 @@ def yml(path: str, edit_to=None):
 def unix_to_readable(unix):
     return datetime.utcfromtimestamp(float(unix)).strftime('%Y/%m/%d %H:%M')
 
-def generate_qr(data):
+def generate_qr(data, fg=None, bg=None, return_bytesio=False):
     qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=4)
     qr.add_data(data)
     qr.make(fit=True)
 
     img_buf = BytesIO()
-    qr.make_image().save(img_buf)
+    qr.make_image(fill_color=fg or 'black', back_color=bg or 'white').save(img_buf)
     img_buf.seek(0)
+
+    if return_bytesio:
+        return img_buf
 
     img_data = img_buf.read()
     img_data = base64.b64encode(img_data)
