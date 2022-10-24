@@ -50,7 +50,7 @@ cache = Cache(app)
 
 @limiter.request_filter
 def ip_whitelist():
-    return tools.ip(flask.request) in tools.yml('config/no-ratelimit-ips')
+    return tools.get_ip(flask.request) in tools.yml('config/no-ratelimit-ips')
 
 dictConfig({
     'version': 1,

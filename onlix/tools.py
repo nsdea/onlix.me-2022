@@ -1,46 +1,53 @@
+"""General helpers for the web server"""
+
+import io
 import yaml
 import flask
 import qrcode
 import base64
+import random
 
-from io import BytesIO
+from typing import Union
 from datetime import datetime
 
-def fix_formatting(text: str):
-    return text.replace('  ', '&nbsp;').replace('\n', '\n<br>\n')
+def generate_token(length: int=10) -> str:
+    """Returns a random token with the given length."""
+    return ''.join([random.choice('abcdefghijklmnopqrstuvwxyz0123456789') for _ in range(length)])
 
-def readable_size(size: float):
-    return round(size/1000000000, 1)
-
-def ip(request): # PRIVACY NOTICE
+def get_ip(request): # PRIVACY NOTICE
+    """Get the request IP."""
     if not request.environ.get('HTTP_X_FORWARDED_FOR'):
         return request.environ['REMOTE_ADDR']
     return request.environ['HTTP_X_FORWARDED_FOR']
 
-def yml(path: str, edit_to=None):
+def yml(path: str, edit_to=None, default={}) -> Union[dict, list, None]:
+    """Reads or writes YAML."""
+
     path = f'{path}.yml'
 
     if not edit_to:
         try:
-            with open(path) as f:
+            with open(path, encoding='utf8') as f:
                 return yaml.load(f.read(), Loader=yaml.SafeLoader)
-        except:
-            open(path, 'w').write('{}')
-            return {}
+        except FileNotFoundError:
+            open(path, 'w', encoding='utf8').write('{}')
+            return default
 
-    with open(path, 'w') as f:
+    with open(path, 'w', encoding='utf8') as f:
         yaml.dump(edit_to, f, sort_keys=False, default_flow_style=False, indent=4)
 
 def unix_to_readable(unix):
+    """Does what it says."""
     return datetime.utcfromtimestamp(float(unix)).strftime('%Y/%m/%d %H:%M')
 
 def generate_qr(data, fg=None, bg=None, return_bytesio=False):
-    qr = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=4)
-    qr.add_data(data)
-    qr.make(fit=True)
+    """Renders the BytesIO string for a QR code with the given data."""
+    qr_code = qrcode.QRCode(version=1, error_correction=qrcode.constants.ERROR_CORRECT_L, box_size=10, border=4)
+    qr_code.add_data(data)
+    qr_code.make(fit=True)
 
-    img_buf = BytesIO()
-    qr.make_image(fill_color=fg or 'black', back_color=bg or 'white').save(img_buf)
+    img_buf = io.BytesIO()
+    qr_code.make_image(fill_color=fg or 'black', back_color=bg or 'white').save(img_buf)
     img_buf.seek(0)
 
     if return_bytesio:
@@ -52,7 +59,6 @@ def generate_qr(data, fg=None, bg=None, return_bytesio=False):
 
     return f'data:image/png;base64,{img_data}'
 
-def render(template: str, notice='', **kwargs):
-    return flask.render_template(template, **kwargs).replace("""            <br>
-            <i id="render-notice"></i>
-""", notice)
+def render(template: str, **kwargs):
+    """Simply renders a template."""
+    return flask.render_template(template, **kwargs)
