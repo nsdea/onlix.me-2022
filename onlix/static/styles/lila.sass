@@ -38,10 +38,6 @@ body.dark nav
 
 /* Make the header bg full width, but the content inline with body */
 body>header 
-    background-repeat: no-repeat
-    background-size: cover
-    background-position: center
-
     text-align: center
     position: relative
     box-sizing: border-box
@@ -50,6 +46,14 @@ body>header
     align-items: center
     justify-content: center
     z-index: 40
+
+    >img
+        position: absolute
+        top: 0
+        left: 0
+    
+        width: 100%
+        height: 300px
 
     &.tall
         padding-top: 3rem
@@ -69,20 +73,42 @@ body>header
         max-width: 40rem
         margin: 1rem auto
 
+hr
+    width: 30%
+    opacity: 0.2
+
+section.highlight
+    *
+        text-align: left
+
+    > i
+        left: 1rem
+        top: 1rem
+        position: absolute
+        opacity: 0.5
+
+    margin-top: 2rem
+
+    color: white
+    // position: relative
+    background: var(--accent)
+    box-shadow: 0 0 0 100vmax var(--accent)
+    clip-path: inset(0 -100vmax)
+    padding: 1rem
+
+    h3
+        margin-block: 0
+
+    button
+        background: none
+        border: 2px solid white
+
+        &:hover
+            color: var(--accent)
+            background: white
+            border-color: transparent
+
 /* ================ COVER ================ */
-
-body>header::before     
-    background-attachment: fixed
-    background-position: center
-    background-repeat: no-repeat
-    background-size: cover
-
-    content: ""
-    position: absolute
-    top: 0px
-    right: 0px
-    bottom: 0px
-    left: 0px
 
 @media (prefers-color-scheme: dark)
     body>header::before 
@@ -106,8 +132,8 @@ body>header
 
 img.blog-image
     width: 100%
-    object-fit: cover !important
-    max-height: 40vh !important
+    object-fit: cover
+    max-height: 40vh
 
 span.ox-label
     color: orange
@@ -134,39 +160,25 @@ nav
     backdrop-filter: blur(10px)
 
 @media (max-width: 720px)
-    nav .logo
-        display: none
-
-    nav i
-        display: none
+    nav
+        .logo, span, i
+            display: none
 
 nav.floating
+    *
+        color: white !important
+
     position: fixed
-    background-color: #242035ce
+    background-color: var(--accent)
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.69)
 
 @media (prefers-color-scheme: light)
     nav.floating
-        background-color: #757a9287
-        box-shadow: 0 0 10px rgba(77, 77, 77, 0.775)
+        background-color: var(--accent)
+        box-shadow: 0 0 10px rgba(227, 227, 227, 0.775)
 
 nav.stay-left
     position: fixed
-
-nav ul,
-nav ol
-    align-content: space-around
-    align-items: center
-    display: flex
-    flex-direction: row
-    justify-content: center
-    list-style-type: none
-
-    margin: 0
-    padding: 0
-
-nav ul li
-    display: inline-block
 
 .dropdown
     position: relative
@@ -198,6 +210,23 @@ nav .logo
         cursor: pointer
         transform: rotate(360deg)
 
+nav span
+    font-size: 1.5rem
+    margin-left: 0.3rem
+    margin-top: 4px
+    float: left
+
+    font-weight: 300
+
+@keyframes navimation
+    from
+        border-top-color: transparent
+        color: inherit
+
+    to
+        border-top-color: white
+        color: var(--accent)
+
 nav a
     margin: 0 1rem .5rem 0
     padding: 0.5rem 1rem
@@ -210,15 +239,16 @@ nav a
         display: none
 
     &.current
-        color: var(--accent) !important
-        border-top: var(--accent) solid
+        color: var(--accent)
+        border-top: white solid
+    
+        animation: navimation .5s ease-out
 
     &.colored
         border-color: var(--accent)
 
     &:hover
         color: var(--accent)
-        border-color: var(--accent)
         position: relative
 
     &.right
@@ -450,7 +480,7 @@ input[type="reset"]:focus,
 input[type="reset"]:enabled:hover,
 input[type="button"]:focus,
 input[type="button"]:enabled:hover
-    filter: brightness(1.4)
+    filter: brightness(1.2)
     cursor: pointer
 
 /* Format the expanding box */

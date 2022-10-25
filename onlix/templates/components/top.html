@@ -19,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="msapplication-TileColor" content="#41234a">
-    <meta name="msapplication-TileImage" content="https://onlix.me/favicons/150.png">
+    <meta name="msapplication-TileImage" content="https://www.onlix.me/favicons/150.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="#41234a">
     <meta name="apple-mobile-web-app-title" content="{{ title }} · ONLIX">
@@ -32,7 +32,7 @@
     <meta name="description" content="{{ description }}">
 
     <meta property="og:description" content="{{ description }}">
-    <meta property="og:image" content="https://onlix.me/images/{{ image or 'wave.jpg' }}">
+    <meta property="og:image" content="https://www.onlix.me/images/{{ image or 'wave.jpg' }}">
     <meta property="og:locale" content="en">
     <meta property="og:site_name" content="onlix.me">
     <meta property="og:title" content="{{ title }} · ONLIX">
@@ -43,13 +43,13 @@
     <meta property="article:section" content="website">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:domain" content="https://onlix.me">
+    <meta name="twitter:domain" content="https://www.onlix.me">
     <meta name="twitter:url" content="/">
     <meta name="twitter:site" content="/">
     <meta name="twitter:creator" content="by ONLIX">
     <meta name="twitter:title" content="{{ title }} · ONLIX">
     <meta name="twitter:description" content="{{ description }}">
-    <meta name="twitter:image:src" content="https://onlix.me/images/{{ image or 'wave.jpg' }}">
+    <meta name="twitter:image:src" content="https://www.onlix.me/images/{{ image or 'wave.jpg' }}">
 
     <link rel="canonical" href="/">
     <link rel="apple-touch-icon" href="/favicons/favicon.ico" sizes="180x180">
@@ -64,10 +64,12 @@
     <body class="">
         {% endif %}
             <div id="⤒"></div>
-            <header class="with-nav {{ cover_classes or 'transparent-35' }}" style="--image: url('https://onlix.me/images/{{ image or '' }}')">
+            <header class="with-nav {{ cover_classes or 'transparent-35' }}">
+                <!-- <img src="https://www.onlix.me/images/{{ image or '' }}" alt="Header image"> -->
                 <nav class="floating" id="navbar" style="transition: top 0.3s">
-                    <img class="logo" src="/favicons/96.png" onclick="window.location.href='/'">
-                    
+                    <!-- <img class="logo" src="/favicons/96.png" onclick="window.location.href='/'"> -->
+                    <span>&nbsp;ONLIX</span>
+
                     <a href="/" class="{{ 'current' if title == 'Home' }}"><i class="bi bi-house"></i> Home</a>                    
                     <a href="/blog" class="{{ 'current' if title == 'Blog Overview' or '· Blog' in title }}"><i class="bi bi-newspaper"></i> Blog</a>
                     <a href="/contact" class="{{ 'current' if title == 'Contact' }}"><i class="bi bi-envelope"></i> Contact</a>

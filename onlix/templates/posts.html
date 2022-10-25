@@ -1,8 +1,9 @@
 {%
     with title="Blog Overview",
     description="View all blog posts " + text,
-    image="blogging.jpg" %}
-{% include "components/top.html" %}
+    image="blogging.jpg"
+%}
+    {% include "components/top.html" %}
 {% endwith %}
 
 <h3>All posts {{ text or '' }}</h3>

@@ -1,6 +1,9 @@
-{% with title="Donate", description="<3", image="euro.jpg"
+{% with
+    title="Donate",
+    description="<3",
+    image="euro.jpg"
 %}
-{% include "components/top.html" %}
+    {% include "components/top.html" %}
 {% endwith %}
 
 {% if error %}

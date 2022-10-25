@@ -1,7 +1,9 @@
-{% with title="Home", description="Hello there! I'm Felix, a tech savvy student living in Germany.
-Welcome to my website!", image="waves.jpg"
+{% with
+    title="Home",
+    description="Hello there! I'm Felix, a tech savvy student living in Germany. Welcome to my website!",
+    image="waves.jpg"
 %}
-{% include "components/top.html" %}
+    {% include "components/top.html" %}
 {% endwith %}
 
 <h2>Welcome!</h2>
@@ -57,23 +59,12 @@ Welcome to my website!", image="waves.jpg"
     </p>
 </details>
 
-<h2>My personal blog</h2> 
-<p>While it is mostly about tech, but I also like to share my thoughts and opinions about anything that crosses my mind.</p>
-<a href="/blog"><button><i class="bi bi-newspaper"></i> Read my blog posts</button></a>
-
-<!-- <hr> -->
-<!-- <img style="height: 50px" src="https://www.python.org/static/community_logos/python-powered-w.svg"></img> -->
-<!-- <img style="height: 50px" src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Powered_by_Debian.svg"></img> -->
-<!-- <a href="https://librewolf.net/">
-    <img style="height: 100px" src="https://www.technologizer.com/wp-content/uploads/2010/09/bestie.jpg"></img>
-</a>*
-<br>
-<a>
-    <a href="https://en.wikipedia.org/wiki/Browser_wars#Mosaic_Wars">
-        
-        *The history behind "Best Viewed With" ↑
-    </a>
-</a> -->
+<section class="highlight">
+    <i class="bi bi-newspaper"></i>
+    <h3>My blog</h3> 
+    <p>While it is mostly about tech, but I also like to share my thoughts and opinions about anything that crosses my mind.</p>
+    <a href="/blog"><button><i class="bi bi-newspaper"></i> Read my blog posts</button></a>
+</section>
 
 <br><hr>
 <p>Cover photo by <a href="https://unsplash.com/@fakurian?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Milad Fakurian</a> on <a href="https://unsplash.com/@fakurian?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>

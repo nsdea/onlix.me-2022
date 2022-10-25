@@ -1,6 +1,8 @@
-{% with title="Donation Form", description="<3"
+{% with
+    title="Donation Form",
+    description="<3"
 %}
-{% include "components/top.html" %}
+    {% include "components/top.html" %}
 {% endwith %}
 
 <h1>Donation</h1>
@@ -8,7 +10,7 @@
 <h3>Bitcoin (BTC)</h3>
 <a href="bitcoin:bc1qzazsy93egdg9p9lskpts0cnh8cgvsy0ryv6rhfvsvmpgk0vstpysk0d593?message=WebsiteDonation">Open address (Electrum)</a>
 <pre>
-    <code>bc1qzazsy93egdg9p9lskpts0cnh8cgvsy0ryv6rhfvsvmpgk0vstpysk0d593</code>
+bc1qzazsy93egdg9p9lskpts0cnh8cgvsy0ryv6rhfvsvmpgk0vstpysk0d593
 </pre>
 
 {% include "components/end.html" %}

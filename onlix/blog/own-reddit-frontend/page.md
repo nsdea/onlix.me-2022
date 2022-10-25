@@ -33,7 +33,7 @@ The great thing about this project is that you can customize every aspect of it.
 
 We especially need the libraries [*Flask*](https://pypi.org/project/Flask/) and [*PRAW*](https://pypi.org/project/mcstatus/) (Python Reddit API Wrapper) in our project.
 
-This project isn't quite simple, so I suggest you take a look at my tutorial on [how to build a Minecraft Serverlist](https://onlix.me/blog/own-minecraft-server-list) before. Even if you're not interested in doing so - it could be useful to have it opened because it's quite similar to this project.
+This project isn't quite simple, so I suggest you take a look at my tutorial on [how to build a Minecraft Serverlist](https://www.onlix.me/blog/own-minecraft-server-list) before. Even if you're not interested in doing so - it could be useful to have it opened because it's quite similar to this project.
 
 First, we need to install a few packages. You need to have [pip installed](https://www.liquidweb.com/kb/install-pip-windows) for the following commands to work. I'm going to assume that you already have a new *Python* version (I'd recommend at least 3.7 or 3.8+) and *pip* installed correctly.
 
@@ -80,7 +80,7 @@ Alright, before we can actually start, we need to organize our project. Set up t
 
 > **Notice ·** You might need to enable "show hidden files" in your file explorer's settings. [Here's how! (Windows 10/11)](https://support.microsoft.com/en-us/windows/view-hidden-files-and-folders-in-windows-97fbc472-c603-9d90-91d0-1166d1d9f4b5#WindowsVersion=Windows_11)
 
-Again, I won't go into detail about some parts of the code which I have already explained in <a href="https://onlix.me/blog/own-minecraft-server-list">how to create a Minecraft server list</a>.
+Again, I won't go into detail about some parts of the code which I have already explained in <a href="https://www.onlix.me/blog/own-minecraft-server-list">how to create a Minecraft server list</a>.
 
 ### API credentials
 
@@ -100,7 +100,7 @@ Again, I won't go into detail about some parts of the code which I have already 
 
     app = flask.Flask(__name__, static_url_path='/')
 
-Again (2.0), I won't go over some code here as I already explained most Flask features in my tutorial about <a href="https://onlix.me/blog/own-minecraft-server-list">how to create a Minecraft server list</a>.
+Again (2.0), I won't go over some code here as I already explained most Flask features in my tutorial about <a href="https://www.onlix.me/blog/own-minecraft-server-list">how to create a Minecraft server list</a>.
 
     @app.route('/')
     def index():
@@ -271,7 +271,7 @@ Adds the three buttons for choosing the sort order and redirecting the user acco
             <!-- <a href="https://reddit.com/r/{{ sub.display_name }}"><button><i class="bi bi-arrow-up-right-circle"></i> Open in normal Reddit</button></a> -->
         </header>
         
-As explained in my tutorial on [how to build a Minecraft Serverlist](https://onlix.me/blog/own-minecraft-server-list), `| safe` allows [Jinja2](https://jinja.palletsprojects.com/en/) to use actual HTML code inside of the template.
+As explained in my tutorial on [how to build a Minecraft Serverlist](https://www.onlix.me/blog/own-minecraft-server-list), `| safe` allows [Jinja2](https://jinja.palletsprojects.com/en/) to use actual HTML code inside of the template.
 
         <main>
             <div class="posts">
@@ -356,7 +356,7 @@ Lastly, up- and downvote arrows.
 
 You can leave an informational message in here if you want to, or links to your social media or privacy policy:
 
-            <p>by <a href="https://onlix.me">ONLIX</a></p>
+            <p>by <a href="https://www.onlix.me">ONLIX</a></p>
         </footer>
     </body>
     </html>

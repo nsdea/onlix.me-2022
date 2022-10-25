@@ -38,13 +38,16 @@ div.text-box {
   width: fit-content;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 10px 50px 0 rgba(0, 0, 0, 0.19);
 }
+div.text-box p {
+  margin: 0;
+}
 
 /* ================ POSTS ================ */
 div.posts {
   display: grid;
   box-sizing: border-box;
-  grid-gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
   align-items: start;
 }
 
