@@ -27,11 +27,11 @@ def manage(app: flask.Flask, *args, **kwargs):
         template = f'{current_path.replace(".closed", "")}.html'
 
         try:
-            return tools.render(template, notice='Auto-rendered this page.')
+            return tools.show(template, notice='Auto-rendered this page.')
         except Exception as e:
             if template == str(e):
-                return tools.render('error.html', title='Path or file not found!', description=f'Sorry, you probably visited an old or invalid site!')
-            return tools.render('error.html', title='Problems with the template', description=f'Sorry, this isn\'t your fault! An issue occurred while trying to render the template.')
+                return tools.show('error.html', title='Path or file not found!', description=f'Sorry, you probably visited an old or invalid site!')
+            return tools.show('error.html', title='Problems with the template', description=f'Sorry, this isn\'t your fault! An issue occurred while trying to render the template.')
 
     @app.after_request
     def add_cors_headers(response):

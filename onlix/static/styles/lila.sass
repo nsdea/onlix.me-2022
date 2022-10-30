@@ -91,8 +91,8 @@ section.highlight
 
     color: white
     // position: relative
-    background: var(--accent)
-    box-shadow: 0 0 0 100vmax var(--accent)
+    background: var(--accent-nav)
+    box-shadow: 0 0 0 100vmax var(--accent-nav)
     clip-path: inset(0 -100vmax)
     padding: 1rem
 
@@ -100,6 +100,7 @@ section.highlight
         margin-block: 0
 
     button
+        color: white
         background: none
         border: 2px solid white
 
@@ -169,12 +170,12 @@ nav.floating
         color: white !important
 
     position: fixed
-    background-color: var(--accent)
+    background-color: var(--accent-nav)
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.69)
 
 @media (prefers-color-scheme: light)
     nav.floating
-        background-color: var(--accent)
+        background-color: var(--accent-nav)
         box-shadow: 0 0 10px rgba(227, 227, 227, 0.775)
 
 nav.stay-left

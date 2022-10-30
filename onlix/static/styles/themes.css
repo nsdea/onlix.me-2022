@@ -16,6 +16,7 @@
     --text-light: #3e3a4f;
     --border: #211e582f;
     --accent: #7b30c7;
+    --accent-nav: #a53ad7d0;
     --accent-light: #ac70e777;
     --code: #5833ea;
     --preformatted: #444;
@@ -185,6 +186,7 @@
         --text-light: #ffffffd8;
         --border: hsla(0, 0%, 100%, 0.099);
         --accent: #ee75de;
+        --accent-nav: #753eb86b;
         --accent-light: #e770d777;
         --code: #f062b5;
         --preformatted: #ccc;

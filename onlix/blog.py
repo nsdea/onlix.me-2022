@@ -70,12 +70,12 @@ def blog_num(num: int):
 @blog_bp.route('/blog/<post>')
 def blog_post(post):
     if not os.path.isdir(f'blog/{post}'):
-        return tools.render('error.html', title='Blog post not found!', description='Maybe the post ID got removed or renamed. In this, use the search box below.')
+        return tools.show('error.html', title='Blog post not found!', description='Maybe the post ID got removed or renamed. In this, use the search box below.')
 
     info = get_info(post)
     recommended_posts = []
 
-    html = tools.render('blog.html', title=info['title'], description=info['description'], post=post, category=info['category'], tags=info['tags'], last_update=info['last_update'], content=info['md_code'], posts=recommended_posts)
+    html = tools.show('blog.html', title=info['title'], description=info['description'], post=post, category=info['category'], tags=info['tags'], last_update=info['last_update'], content=info['md_code'], posts=recommended_posts)
     return html.replace('$$ image $$', f'blog/{post}/image')
 
 @blog_bp.route('/blog/<post>/<image>')
@@ -85,7 +85,7 @@ def blog_post_image(post, image):
 @blog_bp.route('/blog')
 def blog_posts():
     posts = get_posts()
-    return tools.render('posts.html', type='All Posts', text='', tags=[], posts=posts)
+    return tools.show('posts.html', type='All Posts', text='', tags=[], posts=posts)
 
 @blog_bp.route('/blog/@<category>')
 def blog_category(category):
@@ -98,8 +98,8 @@ def blog_category(category):
 
     tags = [tag[0] for tag in collections.Counter(tags).most_common()]
     
-    return tools.render('posts.html', type='Category', text='with category=' + category, tags=tags, posts=posts)
+    return tools.show('posts.html', type='Category', text='with category=' + category, tags=tags, posts=posts)
 
 @blog_bp.route('/blog/+<tag>')
 def blog_tag(tag):
-    return tools.render('posts.html', type='Tag', text='with tag=' + tag, posts=[post for post in get_posts() if tag in post['tags']])
+    return tools.show('posts.html', type='Tag', text='with tag=' + tag, posts=[post for post in get_posts() if tag in post['tags']])

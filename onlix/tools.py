@@ -59,6 +59,6 @@ def generate_qr(data, fg=None, bg=None, return_bytesio=False):
 
     return f'data:image/png;base64,{img_data}'
 
-def render(template: str, **kwargs):
+def show(template: str, **kwargs):
     """Simply renders a template."""
     return flask.render_template(template, **kwargs)

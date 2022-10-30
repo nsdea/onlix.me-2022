@@ -15,16 +15,16 @@ main_bp = flask.Blueprint('main_bp',
 @main_bp.route('/')
 def home():        
     """Home page"""
-    return tools.render('home.html')
+    return tools.show('home.html')
 
 @main_bp.route('/contact')
 def contact():        
     """Contact page"""
-    return tools.render('contact.html')
+    return tools.show('contact.html')
 
 def legal_page() -> str:
     """Renders the HTML for the legal page"""
-    return tools.render('legal.html', last_update=datetime.fromtimestamp(os.path.getmtime(f'templates/legal.html')).strftime('%a %d/%m/%Y %H:%M:%S'))
+    return tools.show('legal.html', last_update=datetime.fromtimestamp(os.path.getmtime(f'templates/legal.html')).strftime('%a %d/%m/%Y %H:%M:%S'))
 
 def legal_page_raw() -> str:
     """Renders raw content of the legal page, without style etc."""
@@ -51,11 +51,22 @@ def donate():
 
     donations = tools.yml('data/donations') or {}
     
-    if not flask.request.args.get('token'):
+    token = flask.request.args.get('token')
+
+    if not token:
         token = tools.generate_token()
         donations[token] = time.time()
         tools.yml('data/donations', edit_to=donations)
 
-        return tools.render('donate.html', token=token)
+        return tools.show('donate.html', token=token)
+    else:
+        diff = 24 * 60 * 60 # 86400 seconds 
 
-    return tools.render('donation.html')
+        if time.time() - (donations.get(token) or -1)  < diff:
+            return tools.show('donation.html')
+        else:
+            return tools.show('donate.html', token=token, error=True)
+
+@main_bp.route('/randomizer')
+def randomizer():
+    return tools.show('random.html')

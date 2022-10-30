@@ -2,6 +2,7 @@ import blog
 import tools
 
 import flask
+import random
 import markupsafe
 
 api_bp = flask.Blueprint('api_bp',
@@ -61,3 +62,11 @@ def login_demo():
         'data': flask.request.data,
         'json': flask.request.get_json()
     }
+
+@api_bp.route('/api/random/website')
+def random_website():
+    with open('static/cdn/top_250000_domains.txt', 'r') as f:
+        sites = f.readlines()
+
+    url = random.choice(sites)
+    return 'https://' + url

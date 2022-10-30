@@ -9,6 +9,9 @@ Thanks to JESHOOTS-com on Pixabay for the [picture](https://pixabay.com/photos/p
 # ONLIX' Hardware Guide
 
 ### Beware - high chip demand & insane high prices (2020-2022)
+
+### Update October 2022: Chip prices are alright as of right now!
+
 Because of the worldwide COVID-19 pandemic and its regulations, a huge amount computer chip manufacturers had problems producing and shipping their chips. In addition to that, Bitcoin and other cryptocurrencies got famous which lead to even more chip shortage. All of this leads to high demand and high prices. [[source]](https://www.thestreet.com/investing/chip-prices-spiking-high-demand-and-supply-chain-disruptions)
 
 Of course, I'll take this into account in my article.
